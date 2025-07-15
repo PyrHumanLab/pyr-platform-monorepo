@@ -1,6 +1,5 @@
 // /web/components/course/NotesPopup.tsx
 
-import { SanityBlockContent } from '@/types'; // We'll add this type soon
 import { BookOpen } from 'lucide-react';
 
 interface NotesPopupProps {
