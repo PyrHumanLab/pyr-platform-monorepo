@@ -1,4 +1,4 @@
-// /web/components/login/FloatingEmojis.tsx - COMPLETE REPLACEMENT FILE
+// /web/components/login/FloatingEmojis.tsx
 
 'use client'
 
@@ -18,8 +18,6 @@ const EMOJIS = [
 ];
 
 const MAX_EMOJIS = 15;
-// --- THIS IS THE FIX ---
-// Doubling the spawn interval halves the density of emojis on screen.
 const SPAWN_INTERVAL_MS = 3000;
 
 interface Emoji {
@@ -46,6 +44,7 @@ export default function FloatingEmojis() {
           const newEmoji: Emoji = {
             id: id,
             emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+            // --- THE FIX IS HERE ---
             style: {
               top: `${Math.random() * 90}%`,
               fontSize: `${Math.random() * 10 + 10}px`,
@@ -53,7 +52,8 @@ export default function FloatingEmojis() {
               animation: `float-across ${duration}s linear`,
               '--drift': `${(Math.random() - 0.5) * 40}px`,
               '--rotation': `${(Math.random() - 0.5) * 80}deg`,
-            }
+            } as React.CSSProperties
+            // -----------------------
           };
           
           setTimeout(() => {
