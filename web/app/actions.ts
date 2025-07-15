@@ -1,4 +1,4 @@
-// /web/app/actions.ts
+// /web/app/actions.ts - DEBUGGING VERSION
 
 'use server'
 
@@ -28,7 +28,6 @@ export async function saveLOProgress(loId: string, chapterId: string) {
   return { success: true, data }
 }
 
-// --- THIS IS THE FUNCTION THE BUILD IS MISSING ---
 export async function getAITutorResponse(question: string, conversationHistory: any[]) {
   const supabase = createServerActionClient({ cookies });
   
@@ -38,7 +37,9 @@ export async function getAITutorResponse(question: string, conversationHistory: 
 
   if (error) {
     console.error('Error invoking Supabase function:', error.message);
-    return { error: 'There was an issue contacting the AI tutor.' };
+    // *** THIS IS THE CHANGE ***
+    // We are now returning the REAL error message to the browser.
+    return { error: `Function Invoke Error: ${error.message}` };
   }
 
   return data;
