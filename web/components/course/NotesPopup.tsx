@@ -1,5 +1,4 @@
 // /web/components/course/NotesPopup.tsx
-
 import { BookOpen } from 'lucide-react';
 
 interface NotesPopupProps {
