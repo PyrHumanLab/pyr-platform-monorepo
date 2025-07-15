@@ -1,4 +1,4 @@
-// /web/app/actions.ts - DEBUGGING VERSION
+// /web/app/actions.ts - FINAL VERSION
 
 'use server'
 
@@ -37,9 +37,8 @@ export async function getAITutorResponse(question: string, conversationHistory: 
 
   if (error) {
     console.error('Error invoking Supabase function:', error.message);
-    // *** THIS IS THE CHANGE ***
-    // We are now returning the REAL error message to the browser.
-    return { error: `Function Invoke Error: ${error.message}` };
+    // Return a clean, generic error to the user
+    return { error: 'There was an issue contacting the AI tutor. Please try again in a moment.' };
   }
 
   return data;
