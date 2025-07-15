@@ -55,10 +55,9 @@ serve(async (req) => {
   }
 
   const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({
-    model: 'gemini-pro',
-    systemInstruction: SYSTEM_PROMPT,
-  });
+  // *** THIS IS THE ONLY CHANGE ***
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
+  // ******************************
   
   const safetySettings = [
     { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH },
